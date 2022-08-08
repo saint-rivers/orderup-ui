@@ -1,5 +1,14 @@
 <div class="flex flex-col">
-  <div class="bg-white border border-gray-200 rounded w-[240px]">
-    <h1>Card</h1>
+  <div
+    class="bg-white border border-gray-200 rounded w-full p-4 mt-2"
+    *ngFor="let order of orders"
+  >
+    <div class="flex flex-row">
+      <img src="../../../assets/foodIcon.png" alt="" width="90" height="90" />
+      <div class="flex flex-col">
+        <h1>{{ order.name }}</h1>
+        <h2>Group: {{ order.group }}</h2>
+      </div>
+    </div>
   </div>
 </div>
