@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ItemFormComponent } from './items/item-form/item-form.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OrderListComponent } from './order/order-list/order-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
