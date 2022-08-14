@@ -9,7 +9,12 @@ import { Order } from '../models/order';
 export class OrderService {
   constructor(private httpClient: HttpClient) {}
 
-  get(): Observable<Order>{
-    return this.httpClient.get<Order>('http://localhost:9191/api/v1/orders');
+  get(): Observable<Order> {
+    const options = {};
+
+    return this.httpClient.get<Order>(
+      'http://localhost:9191/api/v1/orders',
+      options
+    );
   }
 }
