@@ -237,75 +237,18 @@ export class OrderListComponent implements OnInit {
   //   },
   // ];
 
-  orders: Order[] = []
-  filteredOrders: any = []
+  orders: any = [];
   currentType: TabType = 'today';
 
   constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    // this.orders = []
-    this.orderService.get().subscribe(
-      (res) => {
-        this.orders.push(res);
-        this.filteredOrders = res;
-      }
-    );
+    this.orderService.get().subscribe((res) => {
+      this.orders = res;
+    });
   }
 
   selectTab(type: TabType) {
-    const now = new Date();
-    const tmp1 = getStartAndEndOfWeek(new Date());
-    const tmp2 = getStartAndEndOfMonth(new Date());
-
-    console.log(tmp1.toLocaleString());
-    console.log(tmp2[0].toLocaleString().substring(0, 1));
-
     this.currentType = type;
-    switch (this.currentType) {
-      case 'today':
-        this.filteredOrders = this.orders.filter((order) =>
-          order.createdAt.toISOString().includes(new Date().toISOString().substring(0, 10))
-        );
-        break;
-      case 'thisWeek':
-        this.filteredOrders = this.orders.filter((order) => {
-          getStartAndEndOfWeek(now).map((day) =>
-            order.createdAt.toISOString().includes(day.toLocaleString().substring(0, 10))
-          );
-          return order;
-        });
-        break;
-      case 'thisMonth':
-        this.filteredOrders = this.orders.filter((order) =>
-          order.createdAt.toISOString().includes(new Date().toISOString().substring(0, 10))
-        );
-        break;
-      default:
-        break;
-    }
   }
-}
-
-function getStartAndEndOfWeek(date: Date) {
-  const dates: Date[] = [];
-  for (let index = 0; index < 7; index++) {
-    dates[index] = new Date();
-  }
-
-  for (let index = 0; index < dates.length; index++) {
-    dates[index].setDate(date.getDate() + index - date.getDay());
-  }
-
-  return dates;
-}
-
-function getStartAndEndOfMonth(date: Date) {
-  const start = new Date(date.getTime());
-  const end = new Date(date.getTime());
-
-  start.setDate(1);
-  end.setMonth(end.getMonth() + 1);
-  end.setDate(end.getDate() - 1);
-  return [start, end];
 }
