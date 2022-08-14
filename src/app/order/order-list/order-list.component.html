@@ -1,14 +1,59 @@
-<div class="flex flex-col">
-  <div
-    class="bg-white border border-gray-200 rounded w-full p-4 mt-2"
-    *ngFor="let order of orders"
-  >
-    <div class="flex flex-row">
-      <img src="../../../assets/foodIcon.png" alt="" width="90" height="90" />
-      <div class="flex flex-col">
-        <h1>{{ order.name }}</h1>
-        <h2>Group: {{ order.group }}</h2>
+<div class="flex flex-col w-[70vw] justify-between mt-4">
+  <div class="flex flex-row justify-between">
+    <button
+      (click)="selectTab('today')"
+      [ngClass]="{
+        'tab-button-selected': currentType === 'today',
+        'tab-button': currentType !== 'today'
+      }"
+    >
+      Today
+    </button>
+    <button
+      (click)="selectTab('thisWeek')"
+      [ngClass]="{
+        'tab-button-selected': currentType === 'thisWeek',
+        'tab-button': currentType !== 'thisWeek'
+      }"
+    >
+      This Week
+    </button>
+    <button
+      (click)="selectTab('thisMonth')"
+      [ngClass]="{
+        'tab-button-selected': currentType === 'thisMonth',
+        'tab-button': currentType !== 'thisMonth'
+      }"
+    >
+      This Month
+    </button>
+  </div>
+  <h1>Orders This Week</h1>
+
+  <div class="h-[690px] overflow-scroll">
+    <div *ngIf="orders.length > 0">
+      <div
+        class="w-full py-4 mt-2 bg-white border border-gray-200 rounded"
+        *ngFor="let order of orders"
+      >
+        <div class="flex flex-row">
+          <img
+            src="../../../assets/foodIcon.png"
+            alt=""
+            width="90"
+            height="90"
+          />
+          <div class="flex flex-col">
+            <h2 class="card-title">{{ order.name }}</h2>
+            <h3>Group: {{ order.name }}</h3>
+            <h3>Date: {{ order.createdAt | date: "shortDate" }}</h3>
+            <!-- <h3>{{order | json}}</h3> -->
+          </div>
+        </div>
       </div>
+    </div>
+    <div *ngIf="orders.length === 0">
+      <h2>No orders found</h2>
     </div>
   </div>
 </div>

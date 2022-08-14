@@ -1,0 +1,9 @@
+version: '2.9'
+
+services:
+  ui:
+    build:
+      context: .
+    container_name: ui.orderup.com
+    ports:
+      - "4200:80"
