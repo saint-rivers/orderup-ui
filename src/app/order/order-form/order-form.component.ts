@@ -25,10 +25,11 @@ export class OrderFormComponent implements OnInit {
       requestedAt: new Date().toISOString(),
       currency: 'USD',
     };
-
-    console.log(req);
     this.orderService.post(req).subscribe((res) => {
-      console.log(res);
+      // redirect to order page on success
+      if (res.id !== null || res.id !== undefined) {
+        window.location.href = 'http://localhost:4200/orders';
+      }
     });
   }
 }
