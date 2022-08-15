@@ -29,7 +29,7 @@ export class OrderFormComponent implements OnInit {
     this.orderService.post(req).subscribe((res) => {
       // redirect to order page on success
       if (res.id !== null || res.id !== undefined) {
-        Swal.fire('Good job!', 'You clicked the button!', 'success').then(
+        Swal.fire('Order Created!', 'You clicked the button!', 'success').then(
           () => (window.location.href = 'http://localhost:4200/orders')
         );
       }
