@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.action-btn {
+  @apply px-4 py-1 text-lg cursor-pointer;
+  @apply text-orange-500 border border-orange-500 rounded-lg bg-white hover:font-bold;
+  @apply hover:text-white hover:bg-orange-500;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { OrderRequest } from 'src/app/shared/models/order-request';
+import { OrderService } from 'src/app/shared/services/order.service';
 
 @Component({
   selector: 'app-order-form',
@@ -9,13 +11,24 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class OrderFormComponent implements OnInit {
   orderForm = new FormGroup({
     orderName: new FormControl(`Order on ${new Date().toLocaleDateString()}`),
+    description: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {}
 
   handleSubmit() {
-    console.log('hi');
+    const req: OrderRequest = {
+      name: this.orderForm.value.orderName,
+      description: this.orderForm.value.description,
+      requestedAt: new Date().toISOString(),
+      currency: 'USD',
+    };
+
+    console.log(req);
+    this.orderService.post(req).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
