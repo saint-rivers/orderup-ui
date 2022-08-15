@@ -1,28 +1,28 @@
 <div class="flex flex-col h-[97vh] flex-grow">
   <div class="flex flex-row flex-shrink">
     <button
-      (click)="selectTab('today')"
+      (click)="selectTab('TODAY')"
       [ngClass]="{
-        'tab-button-selected': currentType === 'today',
-        'tab-button': currentType !== 'today'
+        'tab-button-selected': currentType === 'TODAY',
+        'tab-button': currentType !== 'TODAY'
       }"
     >
       Today
     </button>
     <button
-      (click)="selectTab('thisWeek')"
+      (click)="selectTab('THIS_WEEK')"
       [ngClass]="{
-        'tab-button-selected': currentType === 'thisWeek',
-        'tab-button': currentType !== 'thisWeek'
+        'tab-button-selected': currentType === 'THIS_WEEK',
+        'tab-button': currentType !== 'THIS_WEEK'
       }"
     >
       This Week
     </button>
     <button
-      (click)="selectTab('thisMonth')"
+      (click)="selectTab('THIS_MONTH')"
       [ngClass]="{
-        'tab-button-selected': currentType === 'thisMonth',
-        'tab-button': currentType !== 'thisMonth'
+        'tab-button-selected': currentType === 'THIS_MONTH',
+        'tab-button': currentType !== 'THIS_MONTH'
       }"
     >
       This Month

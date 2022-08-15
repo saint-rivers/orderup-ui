@@ -1,3 +1,3 @@
-export type TabType = 'today' | 'thisWeek' | 'thisMonth' | 'all';
+export type TabType = 'TODAY' | 'THIS_WEEK' | 'THIS_MONTH' | 'ALL';
 
 export default TabType;
