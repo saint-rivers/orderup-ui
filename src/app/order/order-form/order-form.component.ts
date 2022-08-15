@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { OrderRequest } from 'src/app/shared/models/order-request';
 import { OrderService } from 'src/app/shared/services/order.service';
+import Swal from  'sweetalert2';
 
 @Component({
   selector: 'app-order-form',
@@ -28,7 +29,9 @@ export class OrderFormComponent implements OnInit {
     this.orderService.post(req).subscribe((res) => {
       // redirect to order page on success
       if (res.id !== null || res.id !== undefined) {
-        window.location.href = 'http://localhost:4200/orders';
+        Swal.fire('Good job!', 'You clicked the button!', 'success').then(
+          () => (window.location.href = 'http://localhost:4200/orders')
+        );
       }
     });
   }
