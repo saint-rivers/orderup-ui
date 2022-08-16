@@ -1,9 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-interface Tab {
-  text: string;
-  value: string;
-}
+import { Tab } from 'src/app/shared/models/tab';
 
 @Component({
   selector: 'app-tab-selector',

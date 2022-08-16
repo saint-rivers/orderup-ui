@@ -1,39 +1,11 @@
 <div class="flex flex-col h-[97vh] flex-grow">
-  <!-- <div class="flex flex-row flex-shrink">
-    <button
-      (click)="selectTab('TODAY')"
-      [ngClass]="{
-        'tab-button-selected': currentType === 'TODAY',
-        'tab-button': currentType !== 'TODAY'
-      }"
-    >
-      Today
-    </button>
-    <button
-      (click)="selectTab('THIS_WEEK')"
-      [ngClass]="{
-        'tab-button-selected': currentType === 'THIS_WEEK',
-        'tab-button': currentType !== 'THIS_WEEK'
-      }"
-    >
-      This Week
-    </button>
-    <button
-      (click)="selectTab('THIS_MONTH')"
-      [ngClass]="{
-        'tab-button-selected': currentType === 'THIS_MONTH',
-        'tab-button': currentType !== 'THIS_MONTH'
-      }"
-    >
-      This Month
-    </button> -->
   <app-tab-selector
     (currentTabEmitter)="selectTab($event)"
     [tabs]="tabs"
   ></app-tab-selector>
 
   <div class="flex flex-col flex-grow">
-    <h1>Orders This Week</h1>
+    <h1>Orders {{ currentType.text }}</h1>
 
     <div class="flex flex-row justify-start py-4">
       <a href="/n/orders" class="action-btn">New Order</a>
@@ -55,7 +27,6 @@
               </h2>
               <h3>Group: {{ order.name }}</h3>
               <h3>Date: {{ order.createdAt | date: "short" }}</h3>
-              <!-- <h3>{{order | json}}</h3> -->
             </div>
           </div>
         </div>
