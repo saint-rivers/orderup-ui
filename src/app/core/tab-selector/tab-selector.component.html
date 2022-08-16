@@ -1,0 +1,13 @@
+<div class="flex flex-row flex-shrink">
+  <div *ngFor="let tab of tabs">
+    <button
+      (click)="selectTab(tab.value)"
+      [ngClass]="{
+        'tab-button-selected': currentTab === tab.value,
+        'tab-button': currentTab !== tab.value
+      }"
+    >
+      {{ tab.text }}
+    </button>
+  </div>
+</div>
