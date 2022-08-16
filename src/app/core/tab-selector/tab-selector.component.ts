@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-interface Tab { 
+interface Tab {
   text: string;
   value: string;
 }
@@ -11,18 +11,21 @@ interface Tab {
   styleUrls: ['./tab-selector.component.css'],
 })
 export class TabSelectorComponent implements OnInit {
+  @Input()
+  tabs: Tab[] = [];
   currentTab: string = '';
 
-  tabs: Tab[] = []
+  @Output()
+  currentTabEmitter = new EventEmitter();
 
-  constructor(tabs: Array<Tab>) {
-    this.tabs = tabs;
+  constructor() {}
+
+  ngOnInit(): void {
     this.currentTab = this.tabs[0]?.value;
   }
 
-  ngOnInit(): void {}
-
   selectTab(type: string) {
     this.currentTab = type;
+    this.currentTabEmitter.emit(this.currentTab);
   }
 }

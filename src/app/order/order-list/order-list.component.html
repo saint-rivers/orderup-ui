@@ -1,5 +1,5 @@
 <div class="flex flex-col h-[97vh] flex-grow">
-  <div class="flex flex-row flex-shrink">
+  <!-- <div class="flex flex-row flex-shrink">
     <button
       (click)="selectTab('TODAY')"
       [ngClass]="{
@@ -26,8 +26,11 @@
       }"
     >
       This Month
-    </button>
-  </div>
+    </button> -->
+  <app-tab-selector
+    (currentTabEmitter)="selectTab($event)"
+    [tabs]="tabs"
+  ></app-tab-selector>
 
   <div class="flex flex-col flex-grow">
     <h1>Orders This Week</h1>

@@ -1,0 +1,9 @@
+.tab-button {
+  @apply shadow px-6 py-2 w-1/3;
+  @apply hover:bg-gray-300 bg-gray-100;
+}
+
+.tab-button-selected {
+  @apply shadow px-6 py-2 w-1/3;
+  @apply font-bold text-orange-600;
+}

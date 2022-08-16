@@ -10,21 +10,27 @@ import { TabType } from './TabType';
   styleUrls: ['./order-list.component.css'],
 })
 export class OrderListComponent implements OnInit {
-
   orders: any = [];
-  currentType: TabType = 'TODAY';
+
+  currentType: string = 'TODAY';
+
+  tabs = [
+    { text: 'Today', value: 'TODAY' },
+    { text: 'This Week', value: 'THIS_WEEK' },
+    { text: 'This Month', value: 'THIS_MONTH' },
+  ];
 
   constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.orderService.get(this.currentType.toString()).subscribe((res) => {
+    this.orderService.get(this.currentType).subscribe((res) => {
       this.orders = res;
     });
   }
 
   selectTab(type: TabType) {
     this.currentType = type;
-    this.orderService.get(this.currentType.toString()).subscribe((res) => {
+    this.orderService.get(this.currentType).subscribe((res) => {
       this.orders = res;
     });
   }
