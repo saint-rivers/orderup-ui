@@ -19,6 +19,8 @@ import {
 import { OAuthModule, AuthConfig } from 'angular-oauth2-oidc';
 import { OrderDetailsComponent } from './order/order-details/order-details.component';
 import { TabSelectorComponent } from './core/tab-selector/tab-selector.component';
+import { GroupCreationFormComponent } from './groups/group-creation-form/group-creation-form.component';
+import { GroupListComponent } from './groups/group-list/group-list.component';
 
 export function init_app(authConfigService: AuthConfigService) {
   return () => authConfigService.initAuth();
@@ -33,6 +35,8 @@ export function init_app(authConfigService: AuthConfigService) {
     OrderListComponent,
     OrderDetailsComponent,
     TabSelectorComponent,
+    GroupCreationFormComponent,
+    GroupListComponent,
   ],
   imports: [
     BrowserModule,

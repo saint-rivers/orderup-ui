@@ -1,0 +1,25 @@
+<form
+  action=""
+  class="card-form"
+  [formGroup]="groupForm"
+  (ngSubmit)="onSubmit()"
+>
+  <h1 class="card-form-title">Create a new group</h1>
+  <input
+    class="card-form-input"
+    type="text"
+    placeholder="group name"
+    formControlName="name"
+  />
+  <!-- <input class="card-form-input" type="text" placeholder="group name" /> -->
+
+  <div class="flex flex-row justify-end mb-2">
+    <input
+      class="p-1 px-4 text-white action-btn"
+      type="submit"
+      name="submitBtn"
+      id="submitBtn"
+      value="Create Group"
+    />
+  </div>
+</form>
