@@ -32,4 +32,8 @@ export class OrderListComponent implements OnInit {
       this.orders = res;
     });
   }
+
+  viewOrderDetails(id: string) {
+    window.location.href = `/orders/${id}`;
+  }
 }

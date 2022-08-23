@@ -9,20 +9,21 @@ import { OrderRequest } from '../models/order-request';
   providedIn: 'root',
 })
 export class OrderService {
+  host = 'http://localhost:8000/public/api/v1';
+  // host = 'http://localhost:8000/order-api/api/v1';
+  // host = 'http://localhost:9191/api/v1';
+
   constructor(private httpClient: HttpClient) {}
 
   get(periodType: string): Observable<Order> {
     const queryParams: Params = { period: periodType };
 
-    return this.httpClient.get<Order>('http://localhost:9191/api/v1/orders', {
+    return this.httpClient.get<Order>(`${this.host}/orders`, {
       params: queryParams,
     });
   }
 
   post(req: OrderRequest): Observable<Order> {
-    return this.httpClient.post<Order>(
-      'http://localhost:9191/api/v1/orders',
-      req
-    );
+    return this.httpClient.post<Order>(`${this.host}/orders`, req);
   }
 }

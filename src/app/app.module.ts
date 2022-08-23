@@ -41,7 +41,10 @@ export function init_app(authConfigService: AuthConfigService) {
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:9191/api/v1/orders'],
+        allowedUrls: [
+          'http://localhost:9191/api/v1/orders',
+          'http://localhost:8000/',
+        ],
         sendAccessToken: true,
       },
     }),
