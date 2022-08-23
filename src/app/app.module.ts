@@ -17,6 +17,8 @@ import {
 } from 'src/app/shared/config/auth.config';
 
 import { OAuthModule, AuthConfig } from 'angular-oauth2-oidc';
+import { OrderDetailsComponent } from './order/order-details/order-details.component';
+import { TabSelectorComponent } from './core/tab-selector/tab-selector.component';
 
 export function init_app(authConfigService: AuthConfigService) {
   return () => authConfigService.initAuth();
@@ -29,6 +31,8 @@ export function init_app(authConfigService: AuthConfigService) {
     ItemFormComponent,
     SidebarComponent,
     OrderListComponent,
+    OrderDetailsComponent,
+    TabSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ export function init_app(authConfigService: AuthConfigService) {
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:9191/api/v1/orders'],
+        allowedUrls: [
+          'http://localhost:9191/api/v1/orders',
+          'http://localhost:8000/',
+        ],
         sendAccessToken: true,
       },
     }),

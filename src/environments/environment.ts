@@ -20,7 +20,7 @@ export const environment = {
   envName: 'local',
   keycloak: {
     // Url of the Identity Provider
-    issuer: 'http://localhost:8800/auth/realms/orderup',
+    issuer: 'https://saintrivers.tech/auth/realms/orderup',
 
     // URL of the SPA to redirect the user to after login
     redirectUri: 'http://localhost:4200',

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Order } from 'src/app/shared/models/order';
+import { Tab } from 'src/app/shared/models/tab';
 import { OrderService } from 'src/app/shared/services/order.service';
 import { TabType } from './TabType';
 
@@ -10,22 +9,31 @@ import { TabType } from './TabType';
   styleUrls: ['./order-list.component.css'],
 })
 export class OrderListComponent implements OnInit {
-
   orders: any = [];
-  currentType: TabType = 'TODAY';
+  tabs: Tab[] = [
+    { text: 'Today', value: 'TODAY' },
+    { text: 'This Week', value: 'THIS_WEEK' },
+    { text: 'This Month', value: 'THIS_MONTH' },
+  ];
+
+  currentType: Tab = this.tabs[0];
 
   constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.orderService.get(this.currentType.toString()).subscribe((res) => {
+    this.orderService.get(this.currentType.value).subscribe((res) => {
       this.orders = res;
     });
   }
 
   selectTab(type: TabType) {
-    this.currentType = type;
-    this.orderService.get(this.currentType.toString()).subscribe((res) => {
+    this.currentType = this.tabs.find((tab) => tab.value === type)!!;
+    this.orderService.get(this.currentType.value).subscribe((res) => {
       this.orders = res;
     });
+  }
+
+  viewOrderDetails(id: string) {
+    window.location.href = `/orders/${id}`;
   }
 }
