@@ -12,6 +12,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   fetchByEmail(email: string): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/users/email/${email}`);
+    return this.httpClient.get(`${this.baseUrl}/user/email/${email}`);
   }
 }

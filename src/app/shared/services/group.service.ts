@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Group } from '../models/group';
 import { GroupRequest } from '../models/group-request';
 
@@ -8,7 +9,7 @@ import { GroupRequest } from '../models/group-request';
   providedIn: 'root',
 })
 export class GroupService {
-  host = 'http://localhost:8000/group-service/api/v1';
+  host = `${environment.apiUrl}/group-service/api/v1`;
 
   constructor(private httpClient: HttpClient) {}
 
