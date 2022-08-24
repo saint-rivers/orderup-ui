@@ -2,15 +2,15 @@
   <h1 class="card-form-title">Create an Order</h1>
   <div class="flex flex-col">
     <input
-      formControlName="orderName"
+      formControlName="name"
       class="card-form-input"
       type="text"
       placeholder="order name"
     />
-    <select class="w-full py-1 mb-2 border border-gray-200 rounded">
-      <option value="actual value 1">Display Text 1</option>
-      <option value="actual value 2">Display Text 2</option>
-      <option value="actual value 3">Display Text 3</option>
+    <select class="w-full py-1 mb-2 border border-gray-200 rounded" formControlName="groupId">
+      <option [ngValue]="group.id" *ngFor="let group of availableGroups">
+        <p>{{ group.name }}</p>
+      </option>
     </select>
     <textarea rows="5" class="card-form-input"></textarea>
     <div class="flex flex-row justify-end mb-2">

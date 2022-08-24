@@ -22,6 +22,7 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.get(this.currentType.value).subscribe((res) => {
+      console.log(res);
       this.orders = res;
     });
   }
