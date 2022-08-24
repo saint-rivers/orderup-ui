@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tab } from 'src/app/shared/models/tab';
 import { OrderService } from 'src/app/shared/services/order.service';
-import { TabType } from './TabType';
+import { TabType } from './tab-type';
 
 @Component({
   selector: 'app-order-list',
