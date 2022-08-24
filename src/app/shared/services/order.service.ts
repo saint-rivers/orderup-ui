@@ -1,7 +1,8 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Order } from '../models/order';
 import { OrderRequest } from '../models/order-request';
 
@@ -9,18 +10,24 @@ import { OrderRequest } from '../models/order-request';
   providedIn: 'root',
 })
 export class OrderService {
-  host = 'http://localhost:8000/public/api/v1';
-  // host = 'http://localhost:8000/order-api/api/v1';
-  // host = 'http://localhost:9191/api/v1';
+  host = `${environment.apiUrl}/order-service/api/v1`;
 
   constructor(private httpClient: HttpClient) {}
 
-  get(periodType: string): Observable<Order> {
+  get(periodType: string): Observable<Order | null> {
     const queryParams: Params = { period: periodType };
 
-    return this.httpClient.get<Order>(`${this.host}/orders`, {
-      params: queryParams,
-    });
+    return this.httpClient
+      .get<Order>(`${this.host}/orders`, {
+        params: queryParams,
+      })
+      .pipe(
+        retry(3),
+        catchError((error) => {
+          console.log(error);
+          return of(null);
+        })
+      );
   }
 
   post(req: OrderRequest): Observable<Order> {

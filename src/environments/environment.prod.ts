@@ -1,4 +1,5 @@
 export const environment = {
+  apiUrl: 'http://localhost:8000',
   production: false,
   envName: 'local',
   keycloak: {
@@ -8,7 +9,7 @@ export const environment = {
     // URL of the SPA to redirect the user to after login
     redirectUri: 'http://localhost:4200/',
 
-    // The SPA's id. 
+    // The SPA's id.
     // The SPA is registerd with this id at the auth-serverß
     clientId: 'orderup-frontend',
 
@@ -23,6 +24,6 @@ export const environment = {
     requireHttps: false,
     // at_hash is not present in JWT token
     showDebugInformation: true,
-    disableAtHashCheck: true
-  }
+    disableAtHashCheck: true,
+  },
 };
